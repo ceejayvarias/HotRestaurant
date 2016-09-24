@@ -1,5 +1,6 @@
 var fs = require('fs');
 var express = require('express');
+var path = require('path');
 	// wait_list = require('./wait_list.js');
 	// table = require('./table.js');
 	var bodyParser = require('body-parser');
@@ -12,47 +13,58 @@ var express = require('express');
 	app.use(bodyParser.text());
 	app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
 
-	app.get('/', function(req,res){
-		fs.readFile("rest.html", function(err, data){
-			  res.writeHead(200, {'Content-Type': 'text/html'});
-			  res.end(data);
+	// app.get('/', function(req,res){
+	// 	fs.readFile("rest.html", function(err, data){
+	// 		  res.writeHead(200, {'Content-Type': 'text/html'});
+	// 		  res.end(data);
+	// 	});
+	// });
+	// app.get('/:host', function(req,res){ //using to switch between pages from frontend.
+	// 	var chosen = req.params.host;
+
+	// 	if(chosen == "/allRes") {
+	// 		fs.readFile("allRes.html", function(err, data){
+	// 		  res.writeHead(200, {'Content-Type': 'text/html'});
+	// 		  res.end(data);
+	// 		});
+	// 	} 
+	// 	else if(chosen == "/mainRes"){
+	// 		fs.readFile("makeRes.html", function(err, data){
+	// 		  res.writeHead(200, {'Content-Type': 'text/html'});
+	// 		  res.end(data);
+	// 		});
+	// 	}
+
+		app.get('/rest', function (req, res) {
+		    res.sendFile(path.join(__dirname, 'rest.html'));
 		});
-	});
-	app.get('/:host', function(req,res){ //using to switch between pages from frontend.
-		var chosen = req.params.host;
+		app.get('/allRes', function (req, res) {
+		    res.sendFile(path.join(__dirname, 'allRes.html'));
+		});
 
-		if(chosen == "/allRes") {
-			fs.readFile("allRes.html", function(err, data){
-			  res.writeHead(200, {'Content-Type': 'text/html'});
-			  res.end(data);
-			});
-		} 
-		else if(chosen == "/mainRes"){
-			fs.readFile("makeRes.html", function(err, data){
-			  res.writeHead(200, {'Content-Type': 'text/html'});
-			  res.end(data);
-			});
-		}
-	});
+		app.get('/makeRes', function (req, res) {
+		    res.sendFile(path.join(__dirname, 'makeRes.html'));
+		});
+	// });
 
-	app.get('/api/:host?', function(req,res){
-		var chosen req.params.host;
+	// app.get('/api/:host?', function(req,res){
+	// 	var chosen req.params.host;
 
-		 if (chosen) {
-        console.log(chosen);
+	// 	 if (chosen) {
+ //        console.log(chosen);
 
-        for (var i = 0; i < host.length; i++) {
-            if (chosen === host[i].routeName) {
-                res.json(host[i]);
-                return;
-            }
-        }
+ //        for (var i = 0; i < host.length; i++) {
+ //            if (chosen === host[i].routeName) {
+ //                res.json(host[i]);
+ //                return;
+ //            }
+ //        }
 
-        res.send('No character found');
-	    } else {
-	        res.json(host);
-	    }
-	});
+ //        res.send('No character found');
+	//     } else {
+	//         res.json(host);
+	//     }
+	// });
 
 	app.post('/api/new', function (req, res) {
     var newGuest = req.body;
