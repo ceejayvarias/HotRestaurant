@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Make a Reservation</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+</head>
+<body>
+	<!-- Everything in a Jumbotron -->
+	<div class="container">
+
+		<div class="jumbotron">
+			<h1 class="text-center">
+			<a href = "rest.html"><span class="glyphicon glyphicon-fire"></span> 
+			Hot Restaurant</h1></a>
+			<hr>
+			<h2 class="text-center">Make a Reservation</h2>
+			<br>
+			<!-- Two Buttons -->
+			<div class="text-center">
+				<a href="allRes.html"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> All Reservations</button></a>
+				<!--<a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>-->
+			</div>
+		</div>
+	</div>
+
+<!-- Reservation Page -->
+	<div class="container">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">Table Reservation</h4>
+		</div>
+		<div class="panel-body">
+
+			<form role="form">
+
+				<div>
+					<label for="">Name</label>
+					<input type="text" id="nameIn">
+				</div>
+
+				<div>
+					<label for="">Phone Number</label>
+					<input type="text" id="phoneIn">
+				</div>
+
+				<div>
+					<label for="">Email</label>
+					<input type="text" id="emailIn">
+				</div>
+
+				<div>
+					<label for="">Unique ID</label>
+					<input type="text" id="idIn">
+				</div>
+
+				<button type="submit" class="btn btn-primary submit" id="submitIn">Submit</button>
+			</form>
+
+		</div>
+	</div>
+	</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src = "add.js"></script>
+
+</body>
+</html>
