@@ -35,6 +35,36 @@ var express = require('express');
 		}
 	});
 
+	app.get('/api/:host?', function(req,res){
+		var chosen req.params.host;
+
+		 if (chosen) {
+        console.log(chosen);
+
+        for (var i = 0; i < host.length; i++) {
+            if (chosen === host[i].routeName) {
+                res.json(host[i]);
+                return;
+            }
+        }
+
+        res.send('No character found');
+	    } else {
+	        res.json(host);
+	    }
+	});
+
+	app.post('/api/new', function (req, res) {
+    var newGuest = req.body;
+
+	    console.log(newGuest);
+
+	    host.push(newGuest);
+
+	    res.json(newGuest);
+
+	});
+	
 	app.listen(PORT, function () {
     console.log('App listening on PORT ' + PORT);
 	});
