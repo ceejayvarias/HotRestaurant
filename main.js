@@ -56,7 +56,9 @@ var express = require('express');
 
 	app.post('/api/new', function (req, res) {
     var newGuest = req.body;
-
+    newGuest.uniqueID.replace(/\s+/g, '').toLowerCase();
+    
+ 
 	    console.log(newGuest);
 
 	    host.push(newGuest);
