@@ -21,13 +21,13 @@ var express = require('express');
 	app.get('/:host', function(req,res){ //using to switch between pages from frontend.
 		var chosen = req.params.host;
 
-		if(chosen == "/tables") {
+		if(chosen == "/allRes") {
 			fs.readFile("allRes.html", function(err, data){
 			  res.writeHead(200, {'Content-Type': 'text/html'});
 			  res.end(data);
 			});
 		} 
-		else{
+		else if(chosen == "/mainRes"){
 			fs.readFile("makeRes.html", function(err, data){
 			  res.writeHead(200, {'Content-Type': 'text/html'});
 			  res.end(data);
